@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+.env
+.env.local
+
+# Django
+db.sqlite3
+staticfiles/
+
+# Node / Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+# macOS junk
+.DS_Store
+
+# IDE junk
+.vscode/
+.idea/
+
