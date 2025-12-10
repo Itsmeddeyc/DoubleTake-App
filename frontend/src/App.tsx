@@ -22,7 +22,6 @@ export default function App() {
 
     setCurrentScreen('progress');
 
-    // Simulate processing
     setTimeout(() => {
       setCurrentScreen('results');
     }, 6000);
@@ -40,33 +39,30 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100">
-      <div className="max-w-[412px] mx-auto min-h-screen">
-        
-        {currentScreen === 'upload' && (
-          <UploadReviewScreen
-            images={uploadedImages}
-            onImagesChange={setUploadedImages}
-            combinePages={combinePages}
-            onCombinePagesChange={setCombinePages}
-            onConvert={handleConvert}
-          />
-        )}
+    <div className="relative max-w-[412px] mx-auto min-h-screen bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 rounded-3xl overflow-hidden">
 
-        {currentScreen === 'progress' && <ProgressScreen />}
+      {currentScreen === 'upload' && (
+        <UploadReviewScreen
+          images={uploadedImages}
+          onImagesChange={setUploadedImages}
+          combinePages={combinePages}
+          onCombinePagesChange={setCombinePages}
+          onConvert={handleConvert}
+        />
+      )}
 
-        {currentScreen === 'results' && (
-          <ResultsScreen onExport={handleExport} />
-        )}
+      {currentScreen === 'progress' && <ProgressScreen />}
 
-        {currentScreen === 'success' && (
-          <SuccessScreen
-            exportTarget={exportTarget}
-            onStartOver={handleStartOver}
-          />
-        )}
+      {currentScreen === 'results' && (
+        <ResultsScreen onExport={handleExport} />
+      )}
 
-      </div>
+      {currentScreen === 'success' && (
+        <SuccessScreen
+          exportTarget={exportTarget}
+          onStartOver={handleStartOver}
+        />
+      )}
 
       <ToastError
         show={showError}

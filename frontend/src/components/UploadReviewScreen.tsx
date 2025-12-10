@@ -19,7 +19,9 @@ export function UploadReviewScreen({
   onConvert,
 }: UploadReviewScreenProps) {
   const handleUpload = (files: FileList) => {
-    const newImages = Array.from(files).map((file) => URL.createObjectURL(file));
+    const newImages = Array.from(files).map((file) =>
+      URL.createObjectURL(file)
+    );
     onImagesChange([...images, ...newImages]);
   };
 
@@ -33,12 +35,10 @@ export function UploadReviewScreen({
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative">
       {/* Main scrollable content */}
       <div className="flex-1 overflow-y-auto px-6 pt-8 pb-32">
-        <h1 className="text-center text-gray-800 mb-8">
-          DoubleTake Notes
-        </h1>
+        <h1 className="text-center text-gray-800 mb-8">DoubleTake Notes</h1>
 
         <UploadCard onUpload={handleUpload} />
 
@@ -51,8 +51,8 @@ export function UploadReviewScreen({
         )}
       </div>
 
-      {/* Fixed bottom controls */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md border-t border-gray-200 p-6 space-y-4">
+      {/* Bottom controls INSIDE the mobile shell */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[412px] bg-white/80 backdrop-blur-md border-t border-gray-200 p-6 space-y-4">
         <ToggleSwitch
           label="Combine all pages into one document"
           checked={combinePages}
