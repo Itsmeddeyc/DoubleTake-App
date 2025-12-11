@@ -6,9 +6,12 @@ urlpatterns = [
     # Django admin
     path("admin/", admin.site.urls),
     
-    # Catch-all for React Router (SPA routing) - serves index.html for all routes
+    # Root path
+    path("", home, name="home"),
+    
+    # Catch-all for React Router (SPA routing) - serves index.html for all other routes
     # This must be last - excludes admin and static paths
-    re_path(r'^(?!admin|static).*$', home, name="home"),
+    re_path(r'^(?!admin|static).+$', home, name="home-catchall"),
 ]
 
 # Note: Static files (JS, CSS, assets) are served by WhiteNoise

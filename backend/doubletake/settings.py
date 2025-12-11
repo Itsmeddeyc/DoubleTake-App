@@ -17,13 +17,18 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "dev-secret-key")
 DEBUG = os.environ.get("DEBUG", "True") == "True"
 
 # ALLOWED_HOSTS - handle both comma-separated string and list
+# On Heroku, automatically allow all herokuapp.com domains
 allowed_hosts_env = os.environ.get("ALLOWED_HOSTS", "")
 if allowed_hosts_env:
-    ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_env.split(",") if host.strip()]
+    # Parse the environment variable and add .herokuapp.com wildcard
+    hosts = [host.strip() for host in allowed_hosts_env.split(",") if host.strip()]
+    # Add .herokuapp.com to allow all Heroku subdomains
+    if ".herokuapp.com" not in " ".join(hosts):
+        hosts.append(".herokuapp.com")
+    ALLOWED_HOSTS = hosts
 else:
-    # On Heroku, allow all hosts (Heroku handles routing)
-    # In development, restrict to localhost
-    ALLOWED_HOSTS = ["*"]
+    # Default: allow all Heroku domains and localhost
+    ALLOWED_HOSTS = [".herokuapp.com", "localhost", "127.0.0.1", "*"]
 
 
 # ---------------------------------------------------------
