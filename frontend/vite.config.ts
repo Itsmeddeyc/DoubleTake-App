@@ -3,15 +3,6 @@ import react from '@vitejs/plugin-react-swc';
 import path from 'path';
 
 export default defineConfig({
-  // ---------------------------------------------------------
-  // IMPORTANT FIX:
-  // This forces Vite to use *relative* paths like:
-  //   assets/index-XYZ.js
-  // instead of absolute paths:
-  //   /assets/index-XYZ.js
-  //
-  // Django is now able to serve the assets correctly.
-  // ---------------------------------------------------------
   base: '',
 
   plugins: [react()],
@@ -63,7 +54,9 @@ export default defineConfig({
 
   build: {
     target: 'esnext',
-    outDir: 'build',
+    /** 👇 NEW: Output Vite build into Django backend folder */
+    outDir: path.resolve(__dirname, '../backend/frontend/build'),
+    emptyOutDir: true,
   },
 
   server: {
