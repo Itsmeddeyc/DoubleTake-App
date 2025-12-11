@@ -38,7 +38,9 @@ export function UploadReviewScreen({
     <div className="min-h-screen flex flex-col relative">
       {/* Main scrollable content */}
       <div className="flex-1 overflow-y-auto px-6 pt-8 pb-32">
-        <h1 className="text-center text-gray-800 mb-8">DoubleTake Notes</h1>
+        <div className="text-center space-y-2 mb-8">
+          <h1 className="text-gray-800">DoubleTake Notes</h1>
+        </div>
 
         <UploadCard onUpload={handleUpload} />
 
