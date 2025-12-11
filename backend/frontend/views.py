@@ -9,13 +9,25 @@ def home(request):
     
     Accepts all HTTP methods to support React Router and API calls
     """
-    index_file = settings.BASE_DIR / "frontend" / "build" / "index.html"
-    try:
-        with open(index_file, "r", encoding="utf-8") as f:
-            content = f.read()
-        return HttpResponse(content, content_type="text/html")
-    except FileNotFoundError:
-        return HttpResponse(
-            "<h1>Build files not found</h1><p>Please run: cd frontend && npm run build</p>",
-            status=404
-        )
+    # Try multiple possible locations for the build file
+    possible_paths = [
+        settings.BASE_DIR / "frontend" / "build" / "index.html",
+        settings.BASE_DIR / "staticfiles" / "index.html",  # After collectstatic
+    ]
+    
+    for index_file in possible_paths:
+        if index_file.exists():
+            try:
+                with open(index_file, "r", encoding="utf-8") as f:
+                    content = f.read()
+                return HttpResponse(content, content_type="text/html")
+            except Exception as e:
+                continue
+    
+    # If no build file found, return helpful error
+    return HttpResponse(
+        f"<h1>Build files not found</h1><p>Expected locations:<br>"
+        f"{possible_paths[0]}<br>{possible_paths[1]}</p>"
+        f"<p>Please ensure the frontend is built and collectstatic has run.</p>",
+        status=500
+    )
