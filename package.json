@@ -2,10 +2,11 @@
   "name": "doubletake-app",
   "version": "1.0.0",
   "scripts": {
-    "heroku-postbuild": "cd frontend && npm install && npm run build"
+    "build": "cd frontend && npm install && npm run build",
+    "heroku-prebuild": "./heroku-prebuild.sh"
   },
   "engines": {
-    "node": "24.x",
-    "npm": "10.x"
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
   }
 }

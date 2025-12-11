@@ -135,15 +135,15 @@ USE_TZ = True
 # ---------------------------------------------------------
 STATIC_URL = "/static/"
 
+# Vite builds to backend/frontend/build/ (including assets/ subfolder)
 STATICFILES_DIRS = [
     BASE_DIR / "backend" / "frontend" / "build",
-    BASE_DIR / "backend" / "frontend" / "build" / "assets",
 ]
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-# WhiteNoise
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+
 
 
 # ---------------------------------------------------------

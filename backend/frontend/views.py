@@ -16,9 +16,10 @@ def home(request):
     logger.info(f"Home view called: method={request.method}, path={request.path}, host={request.get_host()}")
     
     # Try multiple possible locations for the build file
+    # Vite builds to backend/frontend/build/ according to vite.config.ts
     possible_paths = [
-        settings.BASE_DIR / "frontend" / "build" / "index.html",
-        settings.BASE_DIR / "staticfiles" / "index.html",  # After collectstatic
+        settings.STATIC_ROOT / "index.html",  # After collectstatic (preferred)
+        settings.BASE_DIR / "backend" / "frontend" / "build" / "index.html",  # Source build
     ]
     
     for index_file in possible_paths:
