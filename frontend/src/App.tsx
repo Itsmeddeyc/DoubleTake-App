@@ -38,8 +38,15 @@ export default function App() {
     setCurrentScreen('upload');
   };
 
+  const shellBackground = {
+    backgroundImage: 'linear-gradient(160deg, #f0faef, #e0f4e3, #f6fcf4)',
+  };
+
   return (
-    <div className="relative max-w-[412px] mx-auto min-h-screen bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 rounded-3xl overflow-hidden">
+    <div
+      className="relative w-full md:max-w-[412px] mx-auto min-h-screen md:min-h-0 md:rounded-3xl overflow-hidden"
+      style={shellBackground}
+    >
 
       {currentScreen === 'upload' && (
         <UploadReviewScreen

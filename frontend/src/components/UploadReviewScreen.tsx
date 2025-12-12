@@ -35,9 +35,9 @@ export function UploadReviewScreen({
   };
 
   return (
-    <div className="min-h-screen flex flex-col relative">
+    <div className="min-h-screen md:min-h-0 flex flex-col relative">
       {/* Main scrollable content */}
-      <div className="flex-1 overflow-y-auto px-6 pt-8 pb-32">
+      <div className="flex-1 overflow-y-auto px-6 pt-8 pb-32 md:pb-10">
         <div className="text-center space-y-2 mb-8">
           <h1 className="text-gray-800">DoubleTake Notes</h1>
         </div>
@@ -54,13 +54,20 @@ export function UploadReviewScreen({
       </div>
 
       {/* Bottom controls INSIDE the mobile shell */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[412px] bg-white/80 backdrop-blur-md border-t border-gray-200 p-6 space-y-4">
+      <div className="absolute bottom-0 left-0 w-full bg-white/80 backdrop-blur-md border-t border-gray-200 p-6 space-y-4 md:static md:mt-8 md:backdrop-blur-0 md:bg-white md:border md:border-gray-200 md:rounded-3xl">
         <ToggleSwitch
           label="Combine all pages into one document"
           checked={combinePages}
           onChange={onCombinePagesChange}
         />
-        <PrimaryButton fullWidth onClick={onConvert}>
+        <PrimaryButton
+          fullWidth
+          onClick={onConvert}
+          gradientClassName=""
+          style={{
+            backgroundImage: 'linear-gradient(135deg, #0b6623, #228b22)',
+          }}
+        >
           Convert Handwriting
         </PrimaryButton>
       </div>

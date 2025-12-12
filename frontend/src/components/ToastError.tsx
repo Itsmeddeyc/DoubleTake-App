@@ -33,7 +33,7 @@ export function ToastError({
           exit={{ opacity: 0, y: -20 }}
           className="fixed top-6 left-0 right-0 z-50 flex justify-center"
         >
-          <div className="mx-6 max-w-[412px] w-full bg-gradient-to-r from-red-50 to-amber-50 border-2 border-red-200 rounded-full px-6 py-4 shadow-lg flex items-center gap-3">
+          <div className="mx-6 w-full md:max-w-[412px] bg-gradient-to-r from-red-50 to-amber-50 border-2 border-red-200 rounded-full px-6 py-4 shadow-lg flex items-center gap-3">
             <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0" />
             <p className="flex-1 text-sm text-red-800">{message}</p>
             <button

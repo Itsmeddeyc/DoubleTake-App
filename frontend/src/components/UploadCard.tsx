@@ -22,7 +22,10 @@ export function UploadCard({ onUpload }: UploadCardProps) {
         className="hidden"
       />
       <div className="flex flex-col items-center text-center space-y-4">
-        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-400 to-purple-400 flex items-center justify-center">
+        <div
+          className="w-20 h-20 rounded-full flex items-center justify-center shadow-md"
+          style={{ backgroundImage: 'linear-gradient(135deg, #0b6623, #228b22)' }}
+        >
           <Plus className="w-10 h-10 text-white" strokeWidth={3} />
         </div>
         <div className="space-y-2">

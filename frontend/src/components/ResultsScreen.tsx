@@ -36,7 +36,7 @@ export function ResultsScreen({ onExport }: ResultsScreenProps) {
   };
 
   return (
-    <div className="min-h-screen flex flex-col px-6 py-8">
+    <div className="min-h-screen md:min-h-0 flex flex-col px-6 py-8 md:py-10">
       <div className="flex-1 space-y-6">
         <div className="text-center space-y-2">
           <h1 className="text-gray-800">Your notes are ready.</h1>
@@ -50,7 +50,12 @@ export function ResultsScreen({ onExport }: ResultsScreenProps) {
         </div>
 
         <div className="space-y-3">
-          <PrimaryButton fullWidth onClick={() => onExport('docs')}>
+          <PrimaryButton
+            fullWidth
+            onClick={() => onExport('docs')}
+            gradientClassName=""
+            style={{ backgroundColor: '#4285F4' }}
+          >
             Send to Google Docs
           </PrimaryButton>
           <SecondaryButton fullWidth onClick={() => onExport('notion')}>

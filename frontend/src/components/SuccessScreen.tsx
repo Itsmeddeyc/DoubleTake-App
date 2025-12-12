@@ -12,7 +12,7 @@ export function SuccessScreen({ exportTarget, onStartOver }: SuccessScreenProps)
   const platformName = exportTarget === 'docs' ? 'Google Docs' : 'Notion';
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-6">
+    <div className="min-h-screen md:min-h-0 flex flex-col items-center justify-center md:justify-start px-6 py-10">
       <div className="w-full max-w-md space-y-8 text-center">
         {/* Success checkmark animation */}
         <motion.div
@@ -45,10 +45,30 @@ export function SuccessScreen({ exportTarget, onStartOver }: SuccessScreenProps)
 
         {/* Action buttons */}
         <div className="space-y-3 pt-8">
-          <PrimaryButton fullWidth onClick={() => window.open('#', '_blank')}>
+          <PrimaryButton
+            fullWidth
+            onClick={() => window.open('#', '_blank')}
+            gradientClassName=""
+            style={
+              exportTarget === 'docs'
+                ? { backgroundColor: '#4285F4' }
+                : {
+                    backgroundColor: '#787774',
+                    color: '#ffffff',
+                  }
+            }
+          >
             View in {platformName}
           </PrimaryButton>
-          <SecondaryButton fullWidth onClick={onStartOver}>
+          <SecondaryButton
+            fullWidth
+            onClick={onStartOver}
+            style={{
+              backgroundColor: '#cfe3d1',
+              color: '#2f4a36',
+              borderColor: '#b7d1ba',
+            }}
+          >
             Convert Another Note
           </SecondaryButton>
         </div>
